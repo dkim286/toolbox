@@ -1,0 +1,33 @@
+#!/bin/sh
+# gui-auth
+# Runs polkit-gnome-authentication-agent-1 for 30s (default) or as defined by argument
+
+auth='/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
+sec='30s'
+
+if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
+  cat <<- EOF
+Usage: gui-auth [DURATION]
+Run the auth agent for DURATION.
+DURATION is in datetime format (40s, 2m, ...). Default is $sec.
+
+OPTIONS
+  -h, --help   display this help and exit
+
+EXAMPLES
+  Run the auth agent for 30 seconds (default)
+    gui-auth 
+  Run the agent for 2 minutes
+    gui-auth 2m
+
+EOF
+  exit 0
+fi
+
+if [ -z $1 ]; then
+	echo "polkit-gnome active for $sec";
+	(timeout $sec $auth) & 
+else
+	echo "polkit-gnome active for $1";
+	(timeout $1 $auth) &
+fi

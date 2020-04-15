@@ -1,0 +1,26 @@
+#!/bin/sh
+# wallpaper
+# Automatically cycles through wallpapers in $HOME/Pictures/wp
+
+if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
+  cat <<-EOF 
+Usage: wallpaper [OPTION]...
+Honestly, this is best used as an entry in .xinitrc or something rather than
+invoking it directly.
+
+OPTIONS
+  -h, --help   show this help and exit
+
+EXAMPLES
+  Run wallpaper and put it into background:
+    wallpaper &
+
+EOF
+exit 0
+fi
+
+while true
+do
+	feh --randomize --bg-fill --no-fehbg $HOME/Pictures/wp
+	sleep 300
+done

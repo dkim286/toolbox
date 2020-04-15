@@ -1,0 +1,100 @@
+#!/bin/bash
+# fakeinstall
+# Drops a symlink to FILENAME in /usr/local/bin
+
+readonly SCRIPT=$(basename $0)
+readonly ARGS="$@"
+
+function usage() {
+  cat <<- EOF
+Usage: $SCRIPT FILENAME [OPTION]...
+Creates a symlink to FILENAME in '/usr/local/bin'
+
+OPTIONS
+  -r, --remove   remove the symlink instead
+  -h, --help     display this help and exit
+
+EXAMPLES
+  Create a symlink to 'myscript' in /usr/local/bin
+    $ $SCRIPT ./myscript
+  Remove a symlink pointing to 'oops':
+    $ $SCRIPT ./oops --remove
+
+EOF
+}
+
+function handle_args() {
+  local opts=rh
+  local lopts=remove,help
+  local args
+  if ! args=$(getopt \
+    --options=$opts \
+    --longoptions=$lopts \
+    --name "$SCRIPT" \
+    -- "$@"); then
+    exit 1
+  fi
+
+  SUPER=0
+  REMOVE=0
+  eval set -- "$args"
+  while true; do
+    case "$1" in
+      -r|--remove)
+        REMOVE=1
+        shift 1
+        ;;
+      -s|--super)
+        SUPER=1
+        shift 1
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      --)
+        shift 1
+        break
+        ;;
+      *)
+        echo "Critical error"
+        exit 1
+        ;;
+    esac
+  done
+
+  if [ $# -lt 1 ]; then
+    echo "$SCRIPT: missing FILENAME"
+    exit 1
+  fi
+  
+  if ! FULLNAME=$(readlink -fe "$1"); then
+    echo "$SCRIPT: file not found: $1";
+    exit 1
+  fi
+  FILENAME=$(basename "$FULLNAME")
+}
+
+function main() {
+  handle_args $ARGS
+  local BIN_DIR="/usr/local/bin"
+  
+  if [ $REMOVE -eq 0 ]; then
+    if [ ! -e "$BIN_DIR/$FILENAME" ]; then
+      sudo ln -s "$FULLNAME" "$BIN_DIR/$FILENAME"
+      exit $?
+    else
+      echo "$SCRIPT: $BIN_DIR/$FILENAME already exists"
+      exit 1
+    fi
+  fi
+  
+  if [ -L "$BIN_DIR/$FILENAME" ]; then
+    sudo rm "$BIN_DIR/$FILENAME"
+    exit $?
+  else
+    echo "$SCRIPT: $BIN_DIR/$FILENAME exists, but it's not a symlink"
+  fi
+  exit 1
+}
+main
