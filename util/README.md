@@ -4,11 +4,7 @@ Contains all the utility scripts.
 
 ## Dependencies
 
-Dependencies in this script include but not limited to:
-
 * feh
-* getopt
-* pandoc
 * tree
 
 ## Scripts
