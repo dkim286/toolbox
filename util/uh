@@ -1,5 +1,5 @@
 #!/bin/sh
-# uhh
+# uh
 # Shows a list of available toolbox scripts
 
 readonly SCRIPT=$(basename "$0")
