@@ -4,6 +4,13 @@ A bunch of scripts cobbled together into an organized repo. It's inevitable that
 
 Scripts that I've copied from other people online are excluded from this public repo for obvious reasons.
 
+## Environment
+
+```
+GNU bash, version 5.0.16(1)-release (x86_64-pc-linux-gnu)
+Linux 5.6.3-arch1-1
+```
+
 ## Setup
 
 Add these two lines to `.bashrc`:
