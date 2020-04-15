@@ -84,7 +84,7 @@ function handle_args() {
 
 function print_tree() {
   basename "$1"
-  tree -I "uh-completion.bash" --prune "$1" | head -n-1 | tail -n+2
+  tree -I "uh-completion.bash|LICENSE|README.md" --prune "$1" | head -n-1 | tail -n+2
 }
 
 function print_root() {
@@ -95,7 +95,7 @@ function print_root() {
     fi
     if [ -n "$(ls -A $folder)" ]; then
       pushd $folder > /dev/null
-      count=$(ls | wc -l)
+      count=$(find . -type f -executable | wc -l)
       echo "$(basename $folder) ($count)"
       popd > /dev/null
     fi
