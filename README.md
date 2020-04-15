@@ -12,7 +12,7 @@ Add these two lines to `.bashrc`:
 export TOOLBOX=/path/to/toolbox
 source $TOOLBOX/uh-completion.bash
 ```
-Drop a symlink to ![`util/uh`](util/uh) inside `/usr/local/bin` or any other convenient location pointed by `$PATH`.
+Drop a symlink to [`util/uh`](https://github.com/dkim286/toolbox/tree/master/util#uh) inside `/usr/local/bin` or any other convenient location pointed by `$PATH`.
 
 Symlink other scripts as you see fit. 
 
