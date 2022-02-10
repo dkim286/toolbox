@@ -45,3 +45,9 @@ To see a list of scripts belonging to a category, run:
 ```console
 $ uh CATEGORY
 ```
+
+## Adding new categories 
+
+Folders act as "categories." 
+
+Just `mkdir new_category` and put some scripts in there. 

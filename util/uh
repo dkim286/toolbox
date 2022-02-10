@@ -11,7 +11,7 @@ DIR=''
 
 function check_env() {
   if [ -z "$TOOLBOX" ]; then
-    echo "$SCRIPT: \$TOOLBOX not defined"
+    echo "$SCRIPT: \$TOOLBOX is not defined -- check README.md on how to set this up"
     exit 1
   fi
 }
