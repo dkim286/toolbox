@@ -1,14 +1,23 @@
 # Toolbox
 
-A bunch of scripts cobbled together into an organized repo. It's inevitable that I'll forget what some of these are for, or how to install them when I migrate to another machine, so this will serve as a documentation of sorts.
-
+A bunch of scripts cobbled together into an organized repo. 
 Scripts that I've copied from other people online are excluded from this public repo for obvious reasons.
 
 ## Environment
 
+```console
+$ bash --version
+GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 ```
-GNU bash, version 5.0.16(1)-release (x86_64-pc-linux-gnu)
-Linux 5.6.3-arch1-1
+
+```console
+$ uname -a
+Linux cork 5.16.5-arch1-1 #1 SMP PREEMPT Tue, 01 Feb 2022 21:42:50 +0000 x86_64 GNU/Linux
 ```
 
 ## Setup
