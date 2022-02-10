@@ -24,7 +24,7 @@ Linux cork 5.16.5-arch1-1 #1 SMP PREEMPT Tue, 01 Feb 2022 21:42:50 +0000 x86_64 
 
 Add these two lines to `.bashrc`:
 
-```sh
+```bash
 export TOOLBOX=/path/to/toolbox
 source $TOOLBOX/uh-completion.bash
 ```
@@ -36,12 +36,12 @@ Symlink other scripts as you see fit.
 
 To see a list of categories, run:
 
-```text
+```console
 $ uh
 ```
 
 To see a list of scripts belonging to a category, run:
 
-```text
+```console
 $ uh CATEGORY
 ```
